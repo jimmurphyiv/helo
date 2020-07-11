@@ -7,9 +7,6 @@ class Nav extends Component {
             <div className='Nav'>
                 <div>
                     <ul>
-                        <li>Home</li>
-                        <li>New Post</li>
-                        <li>Logout</li>
                         <li>
                             <Link to='/'>Dashboard</Link>
                         </li>
