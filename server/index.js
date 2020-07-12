@@ -1,5 +1,5 @@
 require('dotenv').config();
-const bcrypt = require(bcryptjs);
+
 const express = require('express');
 const authCtrl = require('./controllers/authController');
 const mainCtrl = require('./controllers/mainController');
@@ -25,5 +25,5 @@ massive({
 });
 
 app.post('/auth/register',  authCtrl.register);
-
+app.post('/auth/Login', authCtrl.login)
 app.listen(SERVER_PORT, () => console.log('Holla at a port 4774'));
