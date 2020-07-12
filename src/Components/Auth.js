@@ -66,16 +66,16 @@ class Auth extends Component {
 
             <section className='auth-info'>
             <h1>THIS IS HELO</h1>
-                    {this.state.registerView
-                    ? (<>
-                        <h3>Register Below</h3>
+                    {this.state.registerView}
+                 
+                         <h3>RegisterBelow</h3>
                         <input 
                         value={this.state.username}
                         name='username'
                         placeholder='Username'
                         onChange={(e) => this.handleInput(e)}/>
-                       </>)
-                    : <h3>Login Below</h3>}
+                 
+                <h3>Login Below</h3>
                     <input 
                         value={this.state.email}
                         name='email'
@@ -87,8 +87,8 @@ class Auth extends Component {
                         name='password'
                         placeholder='Password'
                         onChange={(e) => this.handleInput(e)}/>
-                    {this.state.registerView
-                    ? (<>
+                    {this.state.registerView}
+                 
                         <input 
                             type='password'
                             value={this.state.verPassword}
@@ -103,7 +103,7 @@ class Auth extends Component {
 
                 <button onClick={this.handleRegister}>Register</button>
                 <p>No Account? <span onClick={this.handleToggle}>Hook it up Here!</span></p>
-                 </>   ) : ( <>
+             
 
                 <button onClick={this.handleLogin} >Login</button>
                 <p>Already a Heloer? <span onClick={this.handleToggle}>Login Here</span></p>  
