@@ -1,7 +1,7 @@
 require('dotenv').config();
-
+const bcrypt = require(bcryptjs);
 const express = require('express');
-
+const authCtrl = require('./controllers/authController');
 const mainCtrl = require('./controllers/mainController');
 const massive = require('massive');
 
@@ -10,6 +10,12 @@ const app = express();
 
 app.use(express.json());
 
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: SESSION_SECRET,
+}))
+
 massive({
     connectionString: CONNECTION_STRING,
     ssl: {rejectUnauthorized: false}
@@ -17,5 +23,7 @@ massive({
     app.set('db', db);
     console.log('db connect, Holla')
 });
+
+app.post('/auth/register',  authCtrl.register);
 
 app.listen(SERVER_PORT, () => console.log('Holla at a port 4774'));

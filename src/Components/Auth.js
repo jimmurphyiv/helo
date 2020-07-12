@@ -1,12 +1,15 @@
 import React,  {Component} from 'react';
+import axios from 'axios';
+
 
 class Auth extends Component {
 
 
     render(){
         return (
-            <div>
-                <h1>Auth</h1>
+            <div className='auth-container'>
+                <button>Register</button>
+                <button>Login</button>                
             </div> 
         ) 
     }

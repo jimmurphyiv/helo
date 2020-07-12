@@ -1,11 +1,11 @@
-create table hola_user (
+create table helo_user (
  id serial primary key,
  username varchar(24),
  password varchar(24),
  porfile_pic text
 );
 
-create table hola_posts (
+create table helo_posts (
  id serial primary key,
  title varchar(24),
  img text,
