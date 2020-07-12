@@ -7,5 +7,6 @@ insert into helo_user (
     ${username},
     ${email},
     ${password},
-    ${profilePic},   
-);
+    ${profilePic}  
+)
+returing user_id, username, password, profile_pic;

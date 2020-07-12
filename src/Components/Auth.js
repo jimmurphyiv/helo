@@ -11,8 +11,7 @@ class Auth extends Component {
             username: '',
             email: '',
             password:'',
-            verPassword: '',
-            pic: '',
+            profilePic: '',
             registerView: false
 
         }
@@ -33,9 +32,9 @@ class Auth extends Component {
     }
 
     handleRegister = () => {
-        const {username, email, password, verPassword, pic} = this.state;
+        const {username, email, password, verPassword, profilePic} = this.state;
             if(password !== '' && password === verPassword){
-            axios.post('/auth/register', {username, email, password, pic})
+            axios.post('/auth/register', {username, email, password, profilePic})
             .then(res => {
                 this.props.getUser(res.data)
                 this.props.history.push('/dashboard');
@@ -65,7 +64,7 @@ class Auth extends Component {
             <div className='auth-container'>
 
             <section className='auth-info'>
-            <h1>THIS IS HELO</h1>
+            <h1>HELO</h1>
                     {this.state.registerView}
                  
                          <h3>RegisterBelow</h3>

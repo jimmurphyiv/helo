@@ -10,9 +10,9 @@ import store from './dux/store';
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-       <React.StrictMode>
+       
         <App />
-      </React.StrictMode>
+      
     </HashRouter>
   </Provider>,
   document.getElementById('root')

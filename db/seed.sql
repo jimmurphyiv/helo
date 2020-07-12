@@ -1,8 +1,9 @@
 create table helo_user (
  id serial primary key,
  username varchar(24),
+ email varchar(200),
  password varchar(24),
- porfile_pic text
+ profile_pic text
 );
 
 create table helo_posts (
