@@ -9,8 +9,8 @@ class Auth extends Component {
         super(props);
         this.state = {
             username: '',
-            email: '',
             password:'',
+            email: '',
             profilePic: '',
             registerView: false
 
@@ -24,7 +24,7 @@ class Auth extends Component {
     }
 
     handleInput = (e) => {
-        this.setState({[e.target.username]: e.target.value})
+        this.setState({[e.target.name]: e.target.value})
     }
 
     handleToggle = () => {
@@ -32,8 +32,8 @@ class Auth extends Component {
     }
 
     handleRegister = () => {
-        const {username, email, password, profilePic} = this.state;
-           axios.post('/auth/register', {username, email, password, profilePic})
+        const {username, password, email, profilePic} = this.state;
+           axios.post('/auth/register', {username,  password, email, profilePic})
             .then(res => {
                 this.props.getUser(res.data)
                 this.props.history.push('/dashboard');
@@ -60,46 +60,46 @@ class Auth extends Component {
 
     render(){
         return (
-            <div className='auth-container'>
-
+        <div className='auth-container'>
             <section className='auth-info'>
-            <h1>HELO</h1>
-
-                <h3>Get with Helo Below</h3>
+                <h1>=HELO=</h1>
+                    {this.state.registerView
+                    ? (<>
+                    <h3>Register Here</h3>
                     <input 
                         value={this.state.username}
                         name='username'
-                        placeholder='Username'
-                        onChange={(e) => this.handleInput(e)}/>
-                 
+                        placeholder='USERNAME'
+                        onChange={this.handleInput}/>
+                       </>)
+                    : <h3>Login Below</h3>}
+                    <input 
+                        value={this.state.email}
+                        name='email'
+                        placeholder='EMAIL'
+                        onChange={this.handleInput}/>
                     <input 
                         type='password'
                         value={this.state.password}
                         name='password'
-                        placeholder='Password'
-                        onChange={(e) => this.handleInput(e)}/>
-                    
-                    <input 
-                        value={this.state.email}
-                        name='email'
-                        placeholder='Email'
-                        onChange={(e) => this.handleInput(e)}/>
-                 
-                    <input
+                        placeholder='PASSWORD'
+                        onChange={this.handleInput}/>
+                    {this.state.registerView
+                    ? (<>
+                        <input
                         value={this.state.picture}
-                        name='pic'
-                        placeholder='Profile image URL'
-                        onChange={(e) => this.handleInput(e)}/>
+                        name='picture'
+                        placeholder='PASTE PIC URL'
+                        onChange={this.handleInput}/>
 
-          
-
-                <button onClick={this.handleRegister}>Register</button>
-                <p>No Account? <span onClick={this.handleToggle}>Hook it up Here!</span></p>
-             
-
-                <button onClick={this.handleLogin} >Login</button>
-                <p>Already a Heloer? <span onClick={this.handleToggle}>Login Here</span></p>  
-            </section> 
+                    <button onClick={this.handleRegister}>REGISTER</button>
+                    <p>Already a Heloer? <span onClick={this.handleToggle}><button>LOGIN</button></span></p>
+                       </>)
+                    : (<>
+                    <button onClick={this.handleLogin}>LOGIN</button>
+                    <p>No account? <span onClick={this.handleToggle}><button>HOOK IT UP!</button></span></p>
+                </>)}
+            </section>
                         
         
         </div>

@@ -7,9 +7,37 @@
   color: #f2f2f2
 } 
 
+/* .Nav {
+  height: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  position: fixed;
+  
+} */
+
 body{
   background-image: linear-gradient(to right, #FF70A6 , #FF9770, #FFD670, #E9FF70);
 }
-img{
-  opacity: .1 url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+
+.auth-container{
+  height: calc(100vh - 100px);
+  background-image: linear-gradient(to right, #FF70A6 , #FF9770, #FFD670, #E9FF70);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+h1{
+  font-size: 50px;
+
+}
+.auth-info{
+  box-sizing: border-box;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
