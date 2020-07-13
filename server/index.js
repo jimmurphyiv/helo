@@ -27,4 +27,7 @@ massive({
 
 app.post('/auth/register',  authCtrl.register);
 app.post('/auth/Login', authCtrl.login);
+app.get('/auth/logout', authCtrl.logout);
+
+
 app.listen(SERVER_PORT, () => console.log('Holla at a port 4774'));

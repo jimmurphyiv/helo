@@ -24,7 +24,7 @@ module.exports = {
         const {email, password} = req.body,
             db = req.app.get('db');
 
-        let foundUser = await db.check_user(email);
+        let foundUser = await db.check_user({email});
         if(!foundUser[0]){
             return res.status(400).send('Email not found');
         }

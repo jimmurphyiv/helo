@@ -65,7 +65,7 @@ class Auth extends Component {
                 <h1>=HELO=</h1>
                     {this.state.registerView
                     ? (<>
-                    <h3>Register Here</h3>
+                    <h3>Sign-up Here</h3>
                     <input 
                         value={this.state.username}
                         name='username'
@@ -93,7 +93,7 @@ class Auth extends Component {
                         onChange={this.handleInput}/>
 
                     <button onClick={this.handleRegister}>REGISTER</button>
-                    <p>Already a Heloer? <span onClick={this.handleToggle}><button>LOGIN</button></span></p>
+                    <p>Already a HELOer? <span onClick={this.handleToggle}><button>LOGIN</button></span></p>
                        </>)
                     : (<>
                     <button onClick={this.handleLogin}>LOGIN</button>
