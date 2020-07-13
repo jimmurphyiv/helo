@@ -23,8 +23,8 @@ class Auth extends Component {
         }
     }
 
-    handleInput = (event) => {
-        this.state({[event.target.name]: event.target.value})
+    handleInput = (e) => {
+        this.setState({[e.target.username]: e.target.value})
     }
 
     handleToggle = () => {
@@ -32,17 +32,16 @@ class Auth extends Component {
     }
 
     handleRegister = () => {
-        const {username, email, password, verPassword, profilePic} = this.state;
-            if(password !== '' && password === verPassword){
-            axios.post('/auth/register', {username, email, password, profilePic})
+        const {username, email, password, profilePic} = this.state;
+           axios.post('/auth/register', {username, email, password, profilePic})
             .then(res => {
                 this.props.getUser(res.data)
                 this.props.history.push('/dashboard');
             })
             .catch(err => console.log(err));
-            }else {
-                alert('Passwords not Congruent');
-            }
+       
+                
+     
 
     }
 
@@ -65,40 +64,34 @@ class Auth extends Component {
 
             <section className='auth-info'>
             <h1>HELO</h1>
-                    {this.state.registerView}
-                 
-                         <h3>RegisterBelow</h3>
-                        <input 
+
+                <h3>Get with Helo Below</h3>
+                    <input 
                         value={this.state.username}
                         name='username'
                         placeholder='Username'
                         onChange={(e) => this.handleInput(e)}/>
                  
-                <h3>Login Below</h3>
-                    <input 
-                        value={this.state.email}
-                        name='email'
-                        placeholder='Email'
-                        onChange={(e) => this.handleInput(e)}/>
                     <input 
                         type='password'
                         value={this.state.password}
                         name='password'
                         placeholder='Password'
                         onChange={(e) => this.handleInput(e)}/>
-                    {this.state.registerView}
+                    
+                    <input 
+                        value={this.state.email}
+                        name='email'
+                        placeholder='Email'
+                        onChange={(e) => this.handleInput(e)}/>
                  
-                        <input 
-                            type='password'
-                            value={this.state.verPassword}
-                            name='verPassword'
-                            placeholder='Verify Password'
-                            onChange={(e) => this.handleInput(e)}/>
-                        <input
-                            value={this.state.picture}
-                            name='pic'
-                            placeholder='Profile image URL'
-                            onChange={(e) => this.handleInput(e)}/>
+                    <input
+                        value={this.state.picture}
+                        name='pic'
+                        placeholder='Profile image URL'
+                        onChange={(e) => this.handleInput(e)}/>
+
+          
 
                 <button onClick={this.handleRegister}>Register</button>
                 <p>No Account? <span onClick={this.handleToggle}>Hook it up Here!</span></p>

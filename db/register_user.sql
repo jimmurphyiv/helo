@@ -9,4 +9,4 @@ insert into helo_user (
     ${password},
     ${profilePic}  
 )
-returing user_id, username, password, profile_pic;
+returning id, username, password, profile_pic;
