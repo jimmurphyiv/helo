@@ -34,7 +34,7 @@ render(){
                                 <button onClick={this.logout} >Logout</button></Link>
                         </li>
                         <li>
-                            <Link to='/form'>New Posts</Link>
+                            <Link to='/post'>New Posts</Link>
                         </li>
                         <li>
                             <Link to='/dashboard'>Dashboard</Link>

@@ -29,5 +29,8 @@ app.post('/auth/register',  authCtrl.register);
 app.post('/auth/Login', authCtrl.login);
 app.get('/auth/logout', authCtrl.logout);
 
+app.post('/api/post', mainCtrl.createPost);
+app.get('/api/post/:id', mainCtrl.getUserPost);
+app.get('/api/delete/post/:id',mainCtrl.deletePost);
 
 app.listen(SERVER_PORT, () => console.log('Holla at a port 4774'));
