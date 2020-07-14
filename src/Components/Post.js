@@ -43,7 +43,12 @@ class Post extends Component {
     }
 
     deletePost = (id) => {
+
+      
+        console.log(id)
+        console.log(this.state.posts.id)
         axios.delete(`/api/post/${id}`)
+        
         .then(() => {
             this.getUserPosts();
         })
@@ -53,13 +58,14 @@ class Post extends Component {
 
     render(){
         console.log(this.state.posts)
-        const mappedPosts = this.state.posts.map((post, i) => (
-            <div className='post-box'>
-                <img key={i} src={post.img} alt='HELO' className='post-image'/>
-                <button onClick={() => this.deletePost(post.post_id)}>Delete</button>
+        const mappedPosts = this.state.posts.map((post, i) => { console.log(post)
+            return( 
+            <div className='postcard'key={i} >
+                <img src={post.img} alt='HELO'className='post-image'/>
+                <button onClick={() => this.deletePost(post.id)}>Delete</button>
             </div>
             
-        ))
+        )})
         
         return (
             <div>

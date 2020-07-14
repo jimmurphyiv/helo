@@ -34,10 +34,10 @@ render(){
                                 <button onClick={this.logout} >Logout</button></Link>
                         </li>
                         <li>
-                            <Link to='/post'>New Posts</Link>
+                            <Link to='/post'><button>New Posts</button></Link>
                         </li>
                         <li>
-                            <Link to='/dashboard'>Dashboard</Link>
+                            <Link to='/dashboard'><button>Dashboard</button></Link>
                         </li>
                     </ul>
                 </div>
