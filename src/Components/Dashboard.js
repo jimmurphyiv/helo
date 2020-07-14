@@ -1,7 +1,7 @@
 import React,  {Component} from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux';
-
+import {getUser} from '../dux/reducer';
 
 class Dashboard extends Component {
     constructor(props){
@@ -12,7 +12,7 @@ class Dashboard extends Component {
         }
     }
     componentDidMount(){
-        if(!this.props.helo_user.email){
+        if(!this.props.username){
             this.props.history.push('/');
         }
     }
@@ -23,9 +23,9 @@ class Dashboard extends Component {
     handleEditView = () => {
         this.setState({editView: !this.state.editView})
     }
-    updateUsername = () => {
+    editUsername = () => {
         const {username} = this.state;
-        axios.put(`/api/user/${this.props.helo_user.helo_user_id}`, {username})
+        axios.put(`/auth/edit/${this.props.helo_user.id}`, {username})
         .then(res => {
             this.props.getUser(res.data[0]);
             this.handleEditView();

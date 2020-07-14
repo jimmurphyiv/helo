@@ -19,6 +19,17 @@ module.exports = {
 
     },
 
+    editUsername: (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params
+        const {username} = req.body
+    
+    db.edit_username({id, username})
+        .then((user) => res.status(200).send(user))
+        .catch(err => res.status(500).send(err))
+    },
+    
+
     deletePost: (req, res) => {
         const db = req.app.get('db');
         const {id}= req.params

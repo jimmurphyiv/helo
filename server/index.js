@@ -28,9 +28,9 @@ massive({
 app.post('/auth/register',  authCtrl.register);
 app.post('/auth/Login', authCtrl.login);
 app.get('/auth/logout', authCtrl.logout);
+app.put('/auth/edit/:id', mainCtrl.editUsername);
 
 app.post('/api/post/:id', mainCtrl.createPost);
-
 app.get('/api/post/:id', mainCtrl.getUserPost);
 app.delete('/api/post/:id',mainCtrl.deletePost);
 

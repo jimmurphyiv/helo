@@ -1,13 +1,13 @@
 import React,  {Component} from 'react';
 
 class Form extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            posts: [],
-            postImg: ''
-        }
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         posts: [],
+    //         postImg: ''
+    //     }
+    // }
 
 
     render(){

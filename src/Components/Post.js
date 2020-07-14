@@ -62,6 +62,7 @@ class Post extends Component {
             return( 
             <div className='postcard'key={i} >
                 <img src={post.img} alt='HELO'className='post-image'/>
+                'title' 
                 <button onClick={() => this.deletePost(post.id)}>Delete</button>
             </div>
             

@@ -33,7 +33,7 @@ class Auth extends Component {
 
     handleRegister = () => {
         const {username, password, email, profilePic} = this.state;
-           axios.post('/auth/register', {username,  password, email, profilePic})
+           axios.post('/auth/register', {username, password, email, profilePic})
             .then(res => {
                 this.props.getUser(res.data)
                 this.props.history.push('/dashboard');
@@ -54,6 +54,8 @@ class Auth extends Component {
         })
         .catch(err => console.log(err));
     }
+
+   
 
 
 

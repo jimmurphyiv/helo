@@ -1,8 +1,8 @@
 import React,  {Component} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser, clearUser} from '../dux/reducer';
+import axios from 'axios';
 
 class Nav extends Component {
     constructor(props){
@@ -12,32 +12,29 @@ class Nav extends Component {
             }
         }
 
-    handleLogout = () => {
-        axios.get('/auth/logout')
-        .then (() => {
-            console.log(this.props)
-        this.props.clearUser()
-        })
-        .catch(err => console.log(err, 'You up and did it'))
-        }
-
-
-  
+        handleLogout = () => {
+            axios.get('/auth/logout')
+            .then (() => {
+           
+            this.props.clearUser()
+            })
+            .catch(err => console.log(err, 'You up and did it'))
+            }
 
 render(){
         return (
             <div className='Nav'>
                 <div>
                     <ul>
-                        <li>
+                        
                             <Link to='/'>
-                                <button onClick={this.logout} >Logout</button></Link>
-                        </li>
+                                <button onClick={this.handleLogout} >Logout</button></Link>
+                        
                         <li>
                             <Link to='/post'><button>New Posts</button></Link>
                         </li>
                         <li>
-                            <Link to='/dashboard'><button>Dashboard</button></Link>
+                            <Link to='/posts'><button>Dashboard</button></Link>
                         </li>
                     </ul>
                 </div>
