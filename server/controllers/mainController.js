@@ -1,9 +1,10 @@
 module.exports = {
     createPost: (req, res) => {
-        const {title, img, content, authorId} = req.body
+        const {title, content, postPic} = req.body
         const db = req.app.get('db');
-        
-    db.create_post(title, img, content, authorId)
+        const {id} = req.params
+
+    db.create_post(title, content, postPic, id)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },
@@ -13,7 +14,7 @@ module.exports = {
         const {id} = req.params
 
     db.get_user_posts(id)
-        .then(post => res.sendStatus(200).send(post))
+        .then(post => res.status(200).send(post))
         .catch(err => res.status(500).send(err))
 
     },

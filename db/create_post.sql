@@ -1,7 +1,7 @@
 insert into helo_posts
 (title,
-img,
 content,
+img,
 author_id
 ) values (
     $1,

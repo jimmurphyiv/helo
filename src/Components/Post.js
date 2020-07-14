@@ -7,23 +7,28 @@ class Post extends Component {
         super(props);
         this.state = {
             posts: [],
+            title: '',
+            content: '',
             postPic: ''
+            
         }
     }
 
     componentDidMount(){
+        this.getUserPosts()
         if(!this.props.helo_user.email){
             this.props.history.push('/dashboard');
         }
     }
 
-    handleInput = (val) => {
-        this.setState({postPic: val})
+    handleInput = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     }
    
     createPost = () => {
-        const {title, postPic, content, id }
-        axios.post('/api/post', {id: this.props.helo_user.author_id, postPic: this.state.postPic})
+        console.log('hit')
+        const {title, content, postPic} = this.state
+        axios.post(`/api/post/${this.props.helo_user.id}`, {title, content, postPic})
         .then(() => {
             this.getUserPosts();
             this.setState({postPic: ''});
@@ -32,7 +37,7 @@ class Post extends Component {
     }
 
     getUserPosts = () => {
-        axios.get(`/api/posts/${this.props.helo_user.helo_user_id}`)
+        axios.get(`/api/post/${this.props.helo_user.id}`)
         .then(res => this.setState({posts: res.data}))
         .catch(err => console.log(err));
     }
@@ -47,7 +52,7 @@ class Post extends Component {
 
 
     render(){
-        console.log(this.props.helo_posts)
+        console.log(this.state.posts)
         const mappedPosts = this.state.posts.map((post, i) => (
             <div className='post-box'>
                 <img key={i} src={post.img} alt='HELO' className='post-image'/>
@@ -61,19 +66,22 @@ class Post extends Component {
                  <h1>Add Posts</h1>
                     {mappedPosts}
                    <input 
-                    value={this.props.title}
+                    value={this.state.title}
+                    name='title'
                     placeholder='Add Title'
-                    onChange={(e) => this.handleInput(e.target.value)}/>
+                    onChange={(e) => this.handleInput(e)}/>
                 
                 <input
-                    value={this.props.postPic}
+                    value={this.state.postPic}
+                    name='postPic'
                     placeholder='Add Image URL'
-                    onChange={(e) => this.handleInput(e.target.value)}/>
+                    onChange={(e) => this.handleInput(e)}/>
                 
                 <input 
-                    value={this.props.content}
+                    value={this.state.content}
+                    name='content'
                     placeholder='Add Content'
-                    onChange={(e) => this.handleInput(e.target.value)}/>
+                    onChange={(e) => this.handleInput(e)}/>
                 <button onClick={this.createPost}>Post</button>
                
                 
@@ -84,6 +92,10 @@ class Post extends Component {
     }
 }
 
-const mapStateToProps = reduxState => reduxState;
+const mapStateToProps = (state) => {
+    return{
+        helo_user: state.helo_user
+    }
+};
 
 export default connect(mapStateToProps)(Post);
