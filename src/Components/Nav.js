@@ -12,6 +12,17 @@ class Nav extends Component {
             }
         }
 
+        componentDidMount(){
+            this.logMeIn()
+        }
+        
+        logMeIn = () => (
+            axios.get('/api/me')
+            .then(res => {
+                this.props.getUser(res.data);
+            })
+            
+        )
         handleLogout = () => {
             axios.get('/auth/logout')
             .then (() => {

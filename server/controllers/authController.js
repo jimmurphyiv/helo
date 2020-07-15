@@ -41,6 +41,14 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
+    },
+
+    logMeIn: async (req,res) => {
+        db = req.app.get('db');
+        if(req.session.helo_user){
+    const me = await db.get_user_id(req.session.helo_user.id)
+    res.status(200).send(me[0])
+        }
     }
 
 

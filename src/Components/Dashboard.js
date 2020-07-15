@@ -1,7 +1,7 @@
 import React,  {Component} from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux';
-import {getUser} from '../dux/reducer';
+// import {getUser} from '../dux/reducer';
 
 class Dashboard extends Component {
     constructor(props){
@@ -11,11 +11,11 @@ class Dashboard extends Component {
             editView: false
         }
     }
-    componentDidMount(){
-        if(!this.props.username){
-            this.props.history.push('/');
-        }
-    }
+    // componentDidMount(){
+    //     if(!this.props.username){
+    //         this.props.history.push('/');
+    //     }
+    // }
 
     handleInput = (val) => {
         this.setState({username: val})

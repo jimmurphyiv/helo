@@ -55,6 +55,8 @@ class Auth extends Component {
         .catch(err => console.log(err));
     }
 
+    
+
    
 
 
