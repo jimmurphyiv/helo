@@ -1,11 +1,11 @@
 insert into helo_posts
 (title,
 content,
-img,
+image,
 author_id
 ) values (
-    $1,
-    $2,
-    $3,
-    $4
+    ${title},
+    ${content},
+    ${image},
+    ${author_id}
 );
